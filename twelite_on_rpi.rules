@@ -1,0 +1,81 @@
+
+(rules PCB twelite_on_rpi
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 1616)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.1)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.9)
+    )
+  )
+  (rule
+    (width 180.0)
+    (clear 160.2)
+    (clear 90.0 (type smd_to_turn_gap))
+    (clear 40.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_600:400_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:400_um-kicad_default" "Via[0-1]_600:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_600:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_600:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 180.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    /DIO14 /DIO7 /DIO5 /DIO18 /DIO19 /DIO4 /DIO6 /DIO8
+    /DIO9 /DIO10 /DIO12 /DIO13 /DIO11 /DIO16 /DIO15 /DIO17
+    /RESET /ADC1 /DIO0 /ADC2 /DIO1 /DIO2 /DIO3 /VCC
+    /RR7 /RP11 /RP13 /RP15 /RP22 /RP24 /RP26 /RP12
+    GND /MISO0 /CLK0 /5V "Net-(D1-Pad2)" "Net-(D2-Pad2)" "Net-(D3-Pad1)" "Net-(D4-Pad1)"
+    /SW
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 180.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

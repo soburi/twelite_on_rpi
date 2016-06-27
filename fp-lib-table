@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name twelite_on_rpi)(type KiCad)(uri "$(KIPRJMOD)\\twelite_on_rpi.pretty")(options "")(descr ""))
+)
